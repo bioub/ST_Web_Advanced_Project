@@ -8,16 +8,13 @@ const user = {
 };
 
 /**
- * 
- * @param {object} credentials 
- * @param {string} credentials.username 
- * @param {string} credentials.password 
+ *
+ * @param {object} credentials
+ * @param {string} credentials.username
+ * @param {string} credentials.password
  */
 function login(credentials) {
-  if (
-    credentials.username === user.username &&
-    credentials.password === user.password
-  ) {
+  if (credentials.username === user.username && credentials.password === user.password) {
     const token = uuid.v4();
     tokens.push(token);
     return Promise.resolve(token);

@@ -9,8 +9,7 @@ exports.list = async (req, res, next) => {
   try {
     const todos = await Todo.find();
     res.json(todos);
-  }
-  catch (err) {
+  } catch (err) {
     next(err);
   }
 };
@@ -30,8 +29,7 @@ exports.show = async (req, res, next) => {
     }
 
     res.json(todo);
-  }
-  catch (err) {
+  } catch (err) {
     next(err);
   }
 };
@@ -46,8 +44,7 @@ exports.add = async (req, res, next) => {
     const todo = await Todo.create(req.body);
     res.statusCode = 201;
     res.json(todo);
-  }
-  catch (err) {
+  } catch (err) {
     next(err);
   }
 };
@@ -67,8 +64,7 @@ exports.delete = async (req, res, next) => {
     }
 
     res.json(todo);
-  }
-  catch (err) {
+  } catch (err) {
     next(err);
   }
 };
@@ -88,8 +84,7 @@ exports.update = async (req, res, next) => {
     }
 
     res.json(todo);
-  }
-  catch (err) {
+  } catch (err) {
     next(err);
   }
 };

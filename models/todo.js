@@ -8,11 +8,11 @@ const todos = [
     id: 2,
     title: 'Introduire Express',
     completed: true,
-  }
+  },
 ];
 
 function generateId() {
-  const maxId = todos.reduce((acc, c) => c.id > acc ? c.id : acc, 0);
+  const maxId = todos.reduce((acc, c) => (c.id > acc ? c.id : acc), 0);
   return maxId + 1;
 }
 
@@ -52,7 +52,6 @@ function findByIdAndDelete(id) {
 
   return Promise.resolve(todo);
 }
-
 
 function findByIdAndUpdate(id, newTodo) {
   id = Number(id);

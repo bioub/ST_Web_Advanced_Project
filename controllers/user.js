@@ -16,9 +16,8 @@ exports.login = async (req, res, next) => {
       });
     }
 
-    res.json({token});
-  }
-  catch (err) {
+    res.json({ token });
+  } catch (err) {
     next(err);
   }
 };
