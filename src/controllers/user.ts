@@ -1,11 +1,13 @@
-const User = require('../models/user');
+import { NextFunction, Request, Response } from 'express';
+
+import * as User from '../models/user';
 
 /**
  * @param req {import('express').Request}
  * @param res {import('express').Response}
  * @param next {import('express').NextFunction}
  */
-exports.login = async (req, res, next) => {
+export async function login(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
   try {
     const token = await User.login(req.body);
 
@@ -20,4 +22,4 @@ exports.login = async (req, res, next) => {
   } catch (err) {
     next(err);
   }
-};
+}

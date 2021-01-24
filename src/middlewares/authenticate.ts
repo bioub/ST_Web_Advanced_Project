@@ -1,11 +1,13 @@
-const { tokens } = require('../models/user');
+import { NextFunction, Request, Response } from 'express';
+
+import { tokens } from '../models/user';
 
 /**
  * @param req {import('express').Request}
  * @param res {import('express').Response}
  * @param next {import('express').NextFunction}
  */
-function authenticate(req, res, next) {
+function authenticate(req: Request, res: Response, next: NextFunction): void {
   if (tokens.includes(req.headers.authorization)) {
     return next();
   }
@@ -16,4 +18,4 @@ function authenticate(req, res, next) {
   });
 }
 
-module.exports = authenticate;
+export default authenticate;

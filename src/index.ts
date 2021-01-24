@@ -1,7 +1,7 @@
-const http = require('http');
+import http from 'http';
 
-const config = require('./config');
-const app = require('./app');
+import app from './app';
+import config from './config';
 
 const server = http.createServer(app);
 
