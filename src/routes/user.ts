@@ -17,4 +17,10 @@ router.get('/me',
   userCtrl.me,
 );
 
+// prettier-ignore
+router.post('/register',
+  express.json(),
+  userCtrl.register,
+);
+
 export default router;

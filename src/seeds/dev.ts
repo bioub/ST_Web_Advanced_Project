@@ -1,19 +1,15 @@
-import { resolve } from 'path';
+import { createConnection, getRepository } from 'typeorm';
 
-import { Database } from 'sqlite3';
+import { User } from '../entities/user';
 
-import config from '../config';
+(async () => {
+  await createConnection();
+  const userRepository = getRepository(User);
 
-const dbPath = resolve(__dirname, '..', '..', config.dbPath);
+  const user: User = {
+    username: 'romain',
+    password: '123456',
+  };
 
-const db = new Database(dbPath);
-
-db.serialize(() => {
-  db.run('DROP TABLE IF EXISTS users;');
-  db.run(
-    'CREATE TABLE users (id INTEGER PRIMARY KEY AUTOINCREMENT, username VARCHAR (40) UNIQUE, password CHAR (32));',
-  );
-  db.run("INSERT INTO users (id, username, password) VALUES (1, 'romain', '123456');");
-});
-
-db.close();
+  await userRepository.insert(user);
+})();

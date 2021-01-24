@@ -1,7 +1,11 @@
 import http from 'http';
 
+import dotenv from 'dotenv';
+import { createConnection } from 'typeorm';
+
 import app from './app';
-import config from './config';
+
+dotenv.config();
 
 const server = http.createServer(app);
 
@@ -9,6 +13,8 @@ server.on('error', (err) => {
   console.log(err.message);
 });
 
-server.listen(config.port, () => {
-  console.log('Server started on port ' + config.port);
+createConnection().then(() => {
+  server.listen(process.env.PORT, () => {
+    console.log('Server started on port ' + process.env.PORT);
+  });
 });
