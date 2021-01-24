@@ -2,11 +2,6 @@ import { NextFunction, Request, Response } from 'express';
 
 import * as User from '../models/user';
 
-/**
- * @param req {import('express').Request}
- * @param res {import('express').Response}
- * @param next {import('express').NextFunction}
- */
 export async function login(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
   try {
     const token = await User.login(req.body);
@@ -19,6 +14,15 @@ export async function login(req: Request, res: Response, next: NextFunction): Pr
     }
 
     res.json({ token });
+  } catch (err) {
+    next(err);
+  }
+}
+
+export async function me(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  try {
+    const user = await User.getCurrent(req.headers.authorization);
+    res.json(user);
   } catch (err) {
     next(err);
   }

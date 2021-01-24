@@ -1,14 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
+import { verify } from 'jsonwebtoken';
 
-import { tokens } from '../models/user';
+import config from '../config';
 
-/**
- * @param req {import('express').Request}
- * @param res {import('express').Response}
- * @param next {import('express').NextFunction}
- */
 function authenticate(req: Request, res: Response, next: NextFunction): void {
-  if (tokens.includes(req.headers.authorization)) {
+  if (verify(req.headers.authorization, config.jwtSecret)) {
     return next();
   }
 

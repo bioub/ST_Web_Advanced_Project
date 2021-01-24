@@ -1,6 +1,6 @@
-import * as uuid from 'uuid';
+import { decode, sign } from 'jsonwebtoken';
 
-const tokens = ['d4973653-9895-4123-a7dd-3e1387d0fbde'];
+import config from '../config';
 
 const user = {
   username: 'romain',
@@ -12,14 +12,23 @@ interface Credentials {
   password: string;
 }
 
-function login(credentials: Credentials): Promise<string | null> {
+async function login(credentials: Credentials): Promise<string | null> {
   if (credentials.username === user.username && credentials.password === user.password) {
-    const token = uuid.v4();
-    tokens.push(token);
-    return Promise.resolve(token);
+    const token = sign({ username: user.username }, config.jwtSecret, {
+      expiresIn: '1d',
+    });
+    return token;
   }
 
-  return Promise.resolve(null);
+  return null;
 }
 
-export { login, tokens };
+async function getCurrent(token: string): Promise<any> {
+  const payload = decode(token) as { [key: string]: any };
+
+  return {
+    username: payload.username,
+  };
+}
+
+export { login, getCurrent };
