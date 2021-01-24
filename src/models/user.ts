@@ -1,3 +1,5 @@
+import { scryptSync } from 'crypto';
+
 import { decode, sign } from 'jsonwebtoken';
 import { getRepository } from 'typeorm';
 
@@ -11,12 +13,16 @@ interface Credentials {
 async function login(credentials: Credentials): Promise<string | null> {
   const userRepository = getRepository(User);
 
+  const password = scryptSync(credentials.password, credentials.username + '|' + process.env.SECRET, 32).toString(
+    'hex',
+  );
+
   const user = await userRepository.findOne({
-    where: { username: credentials.username, password: credentials.password },
+    where: { username: credentials.username, password },
   });
 
   if (user) {
-    const token = sign({ username: user.username }, process.env.JWT_SECRET, {
+    const token = sign({ username: user.username }, process.env.SECRET, {
       expiresIn: '1d',
     });
     return token;
@@ -48,6 +54,8 @@ async function create(data: Credentials): Promise<User> {
   if (existing) {
     throw new Error('username already exists');
   }
+
+  data.password = scryptSync(data.password, data.username + '|' + process.env.SECRET, 32).toString('hex');
 
   const { identifiers } = await userRepository.insert(data);
 
