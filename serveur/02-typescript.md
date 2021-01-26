@@ -77,7 +77,7 @@ A ce stade il doit vous rester 2 erreurs TypeScript :
 
 Dans `middlewares/authentication` l'erreur vient du fait que le header authentication peut ne pas exister (cela dépend de la requete), son type est donc `string | undefined`, alors que le type de tokens est `string[]`.
 
-Editer le fichier `tsconfig.json` en recherchant la ligne `strictNullChecks`, la décommenter les la passer à `true`
+Editer le fichier `tsconfig.json` en recherchant la ligne `strictNullChecks`, la décommenter la passer à `false`
 
 Pour la seconde erreur (celle de `app`) cela vient du fait qu'il n'y a pas de propriété `notFoundReason` dans la déclaration initiale d'express (celle qui se trouve dans `@types/express`) et que `Request` n'y est pas définie comme extensible.
 
