@@ -12,7 +12,7 @@ Pour vérifier le mot de passe il faudra comparer les versions hashées.
 
 Dans le fichier .env, renommer la clé JWT_SECRET en SECRET (elle nous servira aussi pour le hashage), faites les modifications dans le reste de l'application
 
-Dans le fichier `models/user.ts` importer la fonction de hashage `scrypt` ou `scriptSync` du module `crypto` de Node.js.
+Dans le fichier `models/user.ts` importer la fonction de hashage `scrypt` ou `scryptSync` du module `crypto` de Node.js.
 
 Créér et exporter une fonction `hashPassword` qui reçoit le user en entrée `scrypt` avec les paramètres suivants :
 - le mot de passe
