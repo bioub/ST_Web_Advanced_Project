@@ -13,7 +13,7 @@ const mockedUserModel = mocked(userModel, true);
 test('GET /api/users/me', async () => {
   mockedJwt.verify.mockImplementation(() => true);
   mockedJwt.decode.mockImplementation(() => ({ username: 'test' }));
-  mockedUserModel.getCurrent.mockResolvedValue({ id: 1, username: 'test', password: '' });
+  mockedUserModel.getCurrent.mockResolvedValue({ id: 1, username: 'test', password: '', quizzes: [] });
   const res = await request(app).get('/api/users/me');
 
   expect(res.status).toBe(200);

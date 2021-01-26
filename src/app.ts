@@ -4,6 +4,8 @@ import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import morgan from 'morgan';
 
+import answerRoutes from './routes/answer';
+import quizRoutes from './routes/quiz';
 import userRoutes from './routes/user';
 
 const app = express();
@@ -16,6 +18,8 @@ app.use(cors());
 
 // Routes
 app.use('/api/users', userRoutes);
+app.use('/api/quizzes', quizRoutes);
+app.use('/api/answers', answerRoutes);
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use('/api', (req: Request, res: Response, next: NextFunction) => {

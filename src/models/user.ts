@@ -13,6 +13,9 @@ interface Credentials {
 async function login(credentials: Credentials): Promise<string | null> {
   const userRepository = getRepository(User);
 
+  console.log(process.env.SECRET);
+  console.log(credentials);
+
   const password = scryptSync(credentials.password, credentials.username + '|' + process.env.SECRET, 32).toString(
     'hex',
   );
@@ -44,7 +47,7 @@ async function getCurrent(token: string): Promise<User> {
   return user;
 }
 
-async function create(data: Credentials): Promise<User> {
+async function create(data: Credentials): Promise<Partial<User>> {
   const userRepository = getRepository(User);
 
   const existing = await userRepository.findOne({
@@ -52,14 +55,14 @@ async function create(data: Credentials): Promise<User> {
   });
 
   if (existing) {
-    throw new Error('username already exists');
+    throw new Error('Username already exists');
   }
 
   data.password = scryptSync(data.password, data.username + '|' + process.env.SECRET, 32).toString('hex');
 
-  const { identifiers } = await userRepository.insert(data);
+  await userRepository.insert(data);
 
-  return { id: Number(identifiers[0]), ...data };
+  return data;
 }
 
 export { login, getCurrent, create };
