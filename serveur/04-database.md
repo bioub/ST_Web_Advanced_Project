@@ -80,7 +80,7 @@ Les paramètres sont les suivants :
 - `TYPEORM_LOGGING` affiche des logs (par défaut dans le terminal)
 - `TYPEORM_SYNCHRONIZE` si true, un changement dans le mapping est répercuté dans la base immédiatement (à ne pas mettre en prod, utiliser les migrations à la place)
 
-Créer un fichier `src/entities/user.js` y ajouter le contenu suivant :
+Créer un fichier `src/entities/user.ts` y ajouter le contenu suivant :
 
 ```
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
