@@ -59,10 +59,6 @@ Pour pouvoir `mocker` des objets (ici le module `jsonwebtoken`), `ts-jest` nous 
 
 En vous inspirant de l'exemple ci-dessus, compléter le test unitaire du middleware `authenticate` pour traiter le cas où le token serait invalide (la méthode `verify` devrait retourner `false`).
 
-Créer ensuite un test unitaire pour la méthode `getCurrent()` du fichier `models/user`.
-
-Bonus : tester les autres méthodes de `models/user` en faisant des mocks si besoin.
-
 
 ## Test fonctionnels
 

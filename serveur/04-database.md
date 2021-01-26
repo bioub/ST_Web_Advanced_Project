@@ -118,10 +118,9 @@ import { User } from '../entities/user';
   const userRepository = getRepository(User);
   await userRepository.clear();
 
-  const user: User = {
-    username: 'romain',
-    password: '123456',
-  };
+  const user = new User();
+  user.username = 'romain';
+  user.password = '123456';
 
   await userRepository.insert(user);
 })();

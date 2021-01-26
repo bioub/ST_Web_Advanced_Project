@@ -70,7 +70,7 @@ Ecrire les fichiers `models/quiz.ts`, `controllers/quiz.ts` et `routes/quiz.ts` 
 
 `GET /api/quizzes` liste l'ensemble des quizzes du user connecté (vous pourrez réutiliser la méthode getCurrent de `User`)
 
-`POST /api/quizzes` pour créer un quiz
+`POST /api/quizzes` pour créer un quiz (associé au user connecté)
 
 Ces 2 routes seront protégées par le middlewares `authenticate` (il faudra être connecté pour y accéder)
 
@@ -85,7 +85,7 @@ Contrairement à Socrative on ne saisira pas une `Room Name` pour se connecter �
 Ajouter une relation OneToOne `activeQuiz` dans `User` comme dans la doc (`Quiz` plutôt que `Profile`) :
 https://github.com/typeorm/typeorm/blob/master/docs/one-to-one-relations.md
 
-Créer une route `PATCH /api/users/:id` qui permettra d'éditer cette propriété.
+Créer une route `PATCH /api/users/me` qui permettra d'éditer cette propriété.
 
 ## Répondre à un quiz
 
