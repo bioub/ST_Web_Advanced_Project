@@ -27,7 +27,7 @@ jwtSecret: process.env.JWT_SECRET || 'NOT_SO_SECRET',
 
 Pendant le dev la clé `NOT_SO_SECRET` sera utilisé, en prod il faudra absolument créer une variable d'environnement `JWT_SECRET`
 
-Dans `models/user` token pourra être créé à partir de la fonction `sign` de `jsonwebtokens` :
+Dans `models/user` token pourra être créé à partir de la fonction `sign` de `jsonwebtoken` :
 
 ```
 sign({ username: user.username }, config.jwtSecret)

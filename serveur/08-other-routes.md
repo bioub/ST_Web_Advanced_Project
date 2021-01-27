@@ -7,7 +7,7 @@ Il manque 2 fonctionnalités importantes dans l'application :
 - pouvoir lister, créer et lancer des quizzes
 - pouvoir répondre à un quiz qui est lancé
 
-## Lister, créer des quizzes
+## Visualiser, créer des quizzes
 
 Ajouter une entité `Quiz` dans le repertoire `entities`.
 
@@ -15,6 +15,7 @@ Un quiz aura 3 propriétés :
 - `id` (entier auto-incrémenté)
 - `name` (string)
 - `questions` (tableau de questions serialisé en JSON dans la base)
+- `active` (boolean, le quiz auquel les participants peuvent répondre)
 
 Pour simplifier le projet, les questions sont sérialisées en JSON, sinon il aurait fallu créer une entité supplémentaire (et donc une table dans la database).
 
@@ -66,26 +67,17 @@ Créer dans `Quiz` une propriété `user` comme dans la doc.
 
 Editer ensuite le fichier `seeds/dev.ts` pour générer des questionnaires de tests.
 
-Ecrire les fichiers `models/quiz.ts`, `controllers/quiz.ts` et `routes/quiz.ts` qui contiendront 2 routes :
+Ecrire les fichiers `models/quiz.ts`, `controllers/quiz.ts` et `routes/quiz.ts` qui contiendront 3 routes :
 
 `GET /api/quizzes` liste l'ensemble des quizzes du user connecté (vous pourrez réutiliser la méthode getCurrent de `User`)
 
 `POST /api/quizzes` pour créer un quiz (associé au user connecté)
 
+`GET /api/quizzes/active` pour affiche le quiz actif
+
 Ces 2 routes seront protégées par le middlewares `authenticate` (il faudra être connecté pour y accéder)
 
 Penser à ajouter vos routes à `app.ts`.
-
-## Lancer un quiz
-
-Pour simplifier le projet, le quiz lancé sera simplement en activant une Relation `OneToOne` de quiz dans `User`.
-
-Contrairement à Socrative on ne saisira pas une `Room Name` pour se connecter à un qui mais un `Username` qui permettra de retrouve le quiz actif.
-
-Ajouter une relation OneToOne `activeQuiz` dans `User` comme dans la doc (`Quiz` plutôt que `Profile`) :
-https://github.com/typeorm/typeorm/blob/master/docs/one-to-one-relations.md
-
-Créer une route `PATCH /api/users/me` qui permettra d'éditer cette propriété.
 
 ## Répondre à un quiz
 
@@ -98,8 +90,8 @@ Ajouter une entité `Answer` qui contiendra :
 
 La réponse à une question sera de la forme :
 {
-  "id": 1,
-  "answer": "Facebook"
+  "question": 1,
+  "value": "Facebook"
 }
 
 Comme pour `possibleAnswers`, créer la stocker dans la base en JSON.
@@ -107,5 +99,15 @@ Comme pour `possibleAnswers`, créer la stocker dans la base en JSON.
 Créer les fichiers nécessaires pour envoyer une réponse (pas besoin d'être connecté) :
 
 La route sera `POST /api/answers`
+
+Le body de la requête pourra ressembler à : 
+
+```
+{
+    "name": "Romain B",
+    "quizId": 1,
+    "answer": {"question": 2, "value": "Vrai"}
+}
+```
 
 BONUS : ajouter la bibliothèque `class-validator` et valider les données reçues en JSON (champs obligatoire...) : https://github.com/typeorm/typeorm/blob/master/docs/validation.md
