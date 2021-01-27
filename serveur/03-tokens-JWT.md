@@ -71,6 +71,7 @@ Tester ensuite dans Postman que des requêtes vers :
 
 Vous pouvez vérifier le payload des tokens sur le site https://jwt.io 
 
-Bonus 1 : Les fonction `sign`, `verify` et `decode` ont été utilisé de manière synchrone. Des versions asynchones existent (https://github.com/auth0/node-jsonwebtoken#readme) mais sont basés sur des callbacks, créer une fonction qui les transforment en promesse et utiliser ces fonctions asynchrones (pour créer les fonctions basées sur les promesses vous pouvez utiliser la fonction `promisify` du module `util` de Node : https://nodejs.org/dist/latest-v12.x/docs/api/util.html#util_util_promisify_original).
+Bonus 1 : Les fonction `sign`, `verify` ont été utilisé de manière synchrone. Des versions asynchones existent (https://github.com/auth0/node-jsonwebtoken#readme) mais sont basés sur des callbacks, créer une fonction qui les transforment en promesse et utiliser ces fonctions asynchrones (pour créer les fonctions basées sur les promesses vous pouvez utiliser la fonction `promisify` du module `util` de Node : https://nodejs.org/dist/latest-v12.x/docs/api/util.html#util_util_promisify_original).
+(NE PAS promisify `decode` qui n'existe pas en asynchrone)
 
 Bonus 2 : Par défaut la fonction `sign` créer un token sans date d'expiration, en regardant les options de `jsonwebtoken` https://github.com/auth0/node-jsonwebtoken#readme ajouter une expiration à 24h.
