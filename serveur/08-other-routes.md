@@ -67,15 +67,15 @@ Créer dans `Quiz` une propriété `user` comme dans la doc.
 
 Editer ensuite le fichier `seeds/dev.ts` pour générer des questionnaires de tests.
 
-Ecrire les fichiers `models/quiz.ts`, `controllers/quiz.ts` et `routes/quiz.ts` qui contiendront 3 routes :
+Ecrire les fichiers `models/quiz.ts`, `controllers/quiz.ts` et `routes/quiz.ts` qui contiendront 4 routes supplémentaires :
 
-`GET /api/quizzes` liste l'ensemble des quizzes du user connecté (vous pourrez réutiliser la méthode getCurrent de `User`)
+`GET /api/quizzes` liste l'ensemble des quizzes du user connecté, vous avez accès à l'utilisateur connecté via `getCurrent` (nécessite `authenticate`)
 
-`POST /api/quizzes` pour créer un quiz (associé au user connecté)
+`POST /api/quizzes` pour créer un quiz associé au user connecté(nécessite `authenticate`)
 
-`POST /api/quizzes/:id/activate` active le quizz dont l'id est en paramètres (désactive les autres).
+`POST /api/quizzes/:id/activate` active le quizz dont l'id est en paramètres et désactive les autres (nécessite `authenticate`)
 
-`GET /api/quizzes/active` pour afficher le quiz actif
+`GET /api/quizzes/active` pour afficher le quiz actif (sera accessible par tous, donc ne pas utiliser `authenticate`)
 
 Ces 2 routes seront protégées par le middlewares `authenticate` (il faudra être connecté pour y accéder)
 
@@ -85,10 +85,10 @@ Penser à ajouter vos routes à `app.ts`.
 
 Ajouter une entité `Answer` qui contiendra :
 
-- id (auto incrémenté)
-- name (string, le nom de la personne qui répond)
-- quiz (de type Quiz, relation vers le quiz auxquel on répond)
-- answer (la réponse à une question)
+- `id` (auto incrémenté)
+- `name` (string, le nom de la personne qui répond)
+- `quiz` (de type Quiz, relation vers le quiz auxquel on répond)
+- `answer` (la réponse à une question)
 
 La réponse à une question sera de la forme :
 {

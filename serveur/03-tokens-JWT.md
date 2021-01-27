@@ -59,10 +59,11 @@ async function getCurrent(token: string): Promise<any> {
 
 A ce stade elle retourne un user créé à partir du payload, à terme elle ira chercher le user correspondant dans la base de données.
 
-Créer ensuite un controller `me` qui appelera cette méthode en lui passant le token contenu dans l'entête HTTP `Authorization`
+Créer ensuite un controller `me` qui appelera cette méthode en lui passant le token contenu dans l'entête HTTP `Authorization` :
 
-Puis créer une route qui répondra à la requête HTTP :
-`GET /api/users/me`
+Dans le fichier `controller/user` creer une fonction asynchrone `me` reprenant les paramètres de `login`, appeler la fonction `getCurrent` en lui passant le token reçu via le header `Authorization`.
+
+Puis créer une route qui répondra à la requête HTTP `GET /api/users/me` dans le fichier `routes/user` (pour rappel tout le contenu de ce fichier est déjà préfixé par `/api/users`, on n'y saisit donc que la fin de l'URL `/me`).
 
 Ajouter le middleware `authenticate` et le contrôleur `me` à cette route.
 
@@ -71,7 +72,4 @@ Tester ensuite dans Postman que des requêtes vers :
 
 Vous pouvez vérifier le payload des tokens sur le site https://jwt.io 
 
-Bonus 1 : Les fonction `sign`, `verify` ont été utilisé de manière synchrone. Des versions asynchones existent (https://github.com/auth0/node-jsonwebtoken#readme) mais sont basés sur des callbacks, créer une fonction qui les transforment en promesse et utiliser ces fonctions asynchrones (pour créer les fonctions basées sur les promesses vous pouvez utiliser la fonction `promisify` du module `util` de Node : https://nodejs.org/dist/latest-v12.x/docs/api/util.html#util_util_promisify_original).
-(NE PAS promisify `decode` qui n'existe pas en asynchrone)
-
-Bonus 2 : Par défaut la fonction `sign` créer un token sans date d'expiration, en regardant les options de `jsonwebtoken` https://github.com/auth0/node-jsonwebtoken#readme ajouter une expiration à 24h.
+Bonus : Par défaut la fonction `sign` créé un token sans date d'expiration, en regardant les options de `jsonwebtoken` https://github.com/auth0/node-jsonwebtoken#readme ajouter une expiration à 24h.

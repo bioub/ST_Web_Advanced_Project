@@ -80,6 +80,8 @@ Les paramètres sont les suivants :
 - `TYPEORM_LOGGING` affiche des logs (par défaut dans le terminal)
 - `TYPEORM_SYNCHRONIZE` si true, un changement dans le mapping est répercuté dans la base immédiatement (à ne pas mettre en prod, utiliser les migrations à la place)
 
+ATTENTION : cette config ne fonctionne pas pour le build, il faudra créer la variable d'environnement `TYPEORM_ENTITIES` pour définir le chemin vers les fichiers `dist/entities/**/*.js`, lancer donc le script `npm run start:dev` uniquement.
+
 Créer un fichier `src/entities/user.ts` y ajouter le contenu suivant :
 
 ```
@@ -144,7 +146,7 @@ password: string;
 
 Relancer le script `seed:dev` et vérifier dans les logs le changement.
 
-Editer le fichier `src/index.ts`, on créé le pool de connexion avant même de démarrer le serveur HTTP :
+Dans le fichier `src/index.ts`, remplacer le `server.listen()` par le code suivant (où l'on créer le pool de connexion sqlite avant de démarrer le serveur HTTP) :
 
 ```
 createConnection().then(() => {
