@@ -2,7 +2,7 @@
 
 Comme pendant la formation, nous utiliserons le projet Express Rest Skeleton comme base de départ.
 
-Commencez par créer un dossier `ProjetQuizz`.
+Commencez par créer un dossier `ProjetQuiz`.
 
 En ligne de commande, placez vous dans le projet et clonez le squelette :
 

@@ -73,9 +73,9 @@ Ecrire les fichiers `models/quiz.ts`, `controllers/quiz.ts` et `routes/quiz.ts` 
 
 `POST /api/quizzes` pour créer un quiz associé au user connecté(nécessite `authenticate`)
 
-`POST /api/quizzes/:id/activate` active le quizz dont l'id est en paramètres et désactive les autres (nécessite `authenticate`)
+`POST /api/quizzes/:id/activate` active le quizz dont l'id est en paramètres et désactive les autres du même user (nécessite `authenticate`)
 
-`GET /api/quizzes/active` pour afficher le quiz actif (sera accessible par tous, donc ne pas utiliser `authenticate`)
+`GET /api/users/active` pour afficher le quiz actif de l'utilisateur (sera accessible par tous, donc ne pas utiliser `authenticate`)
 
 Ces 2 routes seront protégées par le middlewares `authenticate` (il faudra être connecté pour y accéder)
 
@@ -85,31 +85,40 @@ Penser à ajouter vos routes à `app.ts`.
 
 Ajouter une entité `Answer` qui contiendra :
 
-- `id` (auto incrémenté)
-- `name` (string, le nom de la personne qui répond)
-- `quiz` (de type Quiz, relation vers le quiz auxquel on répond)
-- `answer` (la réponse à une question)
+```
+@Entity()
+export class Answer {
+  @PrimaryGeneratedColumn()
+  id?: number;
 
-La réponse à une question sera de la forme :
-{
-  "question": 1,
-  "value": "Facebook"
+  @Column({ length: 40 })
+  studentName: string;
+
+  @Column()
+  question: number;
+
+  @Column()
+  answer: string;
+
+  @ManyToOne(() => Quiz)
+  quiz: Quiz;
 }
+```
 
-Comme pour `possibleAnswers`, créer la stocker dans la base en JSON.
-
-Créer les fichiers nécessaires pour envoyer une réponse (pas besoin d'être connecté) :
-
-La route sera `POST /api/answers`
+Créer une route `POST /api/answers` qui ne nécessite pas d'être connecté.
 
 Le body de la requête pourra ressembler à : 
 
 ```
 {
-    "name": "Romain B",
-    "quizId": 1,
-    "answer": {"question": 2, "value": "Vrai"}
+    "studentName": "Romain B",
+    "question": 2,
+    "value": "Vrai"
 }
 ```
+
+Au moment d'insérer la réponse dans la base, sélectionner le quiz actif pour l'ajouter à `Answer`.
+
+Idéalement vérifier qu'il n'y a pas déjà une réponse ayant les mêmes `studentName`, `quiz`, `question`.
 
 BONUS : ajouter la bibliothèque `class-validator` et valider les données reçues en JSON (champs obligatoire...) : https://github.com/typeorm/typeorm/blob/master/docs/validation.md
