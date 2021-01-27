@@ -105,7 +105,7 @@ Pour finir, remplacer le script `start` par `node dist/index.js`
 
 Installer `ts-node` : `npm i ts-node -D`
 
-Remplacer le script `start:dev` par `nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/index.ts`
+Remplacer le script `start:dev` par `nodemon --watch \"src/**/*.ts\" --ignore \"src/**/*.spec.ts\" --exec \"ts-node\" src/index.ts`
 
 ## ESLint TypeScript
 
