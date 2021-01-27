@@ -73,7 +73,9 @@ Ecrire les fichiers `models/quiz.ts`, `controllers/quiz.ts` et `routes/quiz.ts` 
 
 `POST /api/quizzes` pour créer un quiz (associé au user connecté)
 
-`GET /api/quizzes/active` pour affiche le quiz actif
+`POST /api/quizzes/:id/activate` active le quizz dont l'id est en paramètres (désactive les autres).
+
+`GET /api/quizzes/active` pour afficher le quiz actif
 
 Ces 2 routes seront protégées par le middlewares `authenticate` (il faudra être connecté pour y accéder)
 
