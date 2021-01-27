@@ -144,7 +144,7 @@ password: string;
 
 Relancer le script `seed:dev` et vérifier dans les logs le changement.
 
-Editer le fichier `index.ts`, on créé le pool de connexion avant même de démarrer le serveur HTTP :
+Editer le fichier `src/index.ts`, on créé le pool de connexion avant même de démarrer le serveur HTTP :
 
 ```
 createConnection().then(() => {
