@@ -1,6 +1,7 @@
 import { Component } from "react";
-import { BrowserRouter, NavLink, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
+import Menu from "./Menu";
 import Home from "./public/Home";
 import NotFound from "./public/NotFound";
 import Answer from "./student/Answer";
@@ -15,18 +16,14 @@ class App extends Component {
     return (
       <div className="App">
         <BrowserRouter>
-          <header className="host">
-            <NavLink to="/" className="link">STocrative</NavLink>
-            <NavLink to="/teacher" className="link">Teacher</NavLink>
-            <NavLink to="/student" className="link">Student</NavLink>
-          </header>
+          <Menu />
           <main>
             <Switch>
               <Route path="/" component={Home} exact />
               <Route path="/teacher/login" component={TeacherLogin} />
               <Route path="/teacher/register" component={Register} />
-              <Route path="/teacher" component={Quizzes} />
               <Route path="/teacher/create-quizz" component={QuizCreation} />
+              <Route path="/teacher" component={Quizzes} />
               <Route path="/student/login" component={StudentLogin} />
               <Route path="/student" component={Answer} />
               <Route path="*" component={NotFound} />
