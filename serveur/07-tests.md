@@ -10,12 +10,14 @@ Créer une config pour `ts-jest` via la commande: `npx ts-jest config:init`
 
 Créer un script npm `test` qui lancera le programme `jest` (`ts-jest` sera bien utilisé par `jest` en interne)
 
-Ajouter la config suivante dans le fichier `package.json` :
+Editer le fichier `jest.config.js` comme ceci :
 
 ```
-"jest": {
-  "testEnvironment": "node"
-}
+module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  rootDir: 'src',
+};
 ```
 
 ## Test unitaires
