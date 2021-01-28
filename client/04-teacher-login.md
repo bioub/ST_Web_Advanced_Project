@@ -4,10 +4,11 @@ Modifier le composant `teacher/Login.tsx` pour le code suivant :
 
 ```
 import { Component } from "react";
+import { RouteComponentProps } from "react-router-dom";
 
 import styles from "./Login.module.css";
 
-class Login extends Component {
+class Login extends Component<RouteComponentProps> {
   render() {
     return (
       <form className={styles.host}>
