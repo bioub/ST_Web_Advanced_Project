@@ -32,6 +32,8 @@ class Quizzes extends Component<Props, State> {
               <th>Quiz</th>
               <th>Actions</th>
             </tr>
+          </thead>
+          <tbody>
             <tr>
               <td>An awesome quiz</td>
               <td>
@@ -44,7 +46,7 @@ class Quizzes extends Component<Props, State> {
                 <button disabled>Activate</button>
               </td>
             </tr>
-          </thead>
+          </tbody>
         </table>
       </div>
     );
