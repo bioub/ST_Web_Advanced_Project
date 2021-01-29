@@ -76,7 +76,7 @@ Stocker l'utilisateur résolu par la promesse de `fetchCurrentUser` dans le stat
 
 Compléter l'interface `State` de `Quizzes` pour qu'elle accepter une propriété `user` de type `User` (vous pouvez aussi utiliser `Partial<User>` si c'est plus adapté à votre code).
 
-Créer ensuite une méthode `fetchQuizzes` sur le même modèle que `fetchCurrentUser`, appeler cette méthode dans `componentDidMount` et stocker les quizzes dans le state. `fetchQuizzes` devra requêter `GET http://localhost:4000/api/users/quizzes`.
+Créer ensuite une méthode `fetchQuizzes` sur le même modèle que `fetchCurrentUser`, appeler cette méthode dans `componentDidMount` et stocker les quizzes dans le state. `fetchQuizzes` devra requêter `GET http://localhost:4000/api/quizzes`.
 
 Créer et exporter une interface pour `Quiz` en vous aidant par exemple du site : https://quicktype.io/typescript/
 

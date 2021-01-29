@@ -21,4 +21,4 @@ Dans le composant `Answer` :
 
 - afficher la liste des questions
 - afficher les possibleAnswers sous forme de boutons
-- au click d'une possibleAnswer appeler postAnswer et changer la couleur du bouton (vert si la réponse est bonne, rouge sinon et la bonne réponse en bleu).
+- au click d'une possibleAnswer appeler postAnswer et changer la couleur du bouton (vert si la réponse est bonne, rouge sinon).
