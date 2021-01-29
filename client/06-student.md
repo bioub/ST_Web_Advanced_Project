@@ -15,7 +15,7 @@ A la place stockez `studentName` et `teacherUsername` dans le localStorage et re
 Ajouter un fichier `student/api.ts` et créer 2 méthodes :
 
 - `fetchActiveQuiz` qui va requêter `GET http://localhost:4000/api/quizzes/active?username=romain` (`romain` sera à remplacer par `teacherUsername` contenu dans le localStorage)
-- `postAnswer` qui va poster les réponses
+- `postAnswer` qui va poster la réponse
 
 Dans le composant `Answer` :
 
