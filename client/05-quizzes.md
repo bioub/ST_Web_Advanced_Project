@@ -17,6 +17,10 @@ interface State {
 }
 
 class Quizzes extends Component<Props, State> {
+  state: State = {
+
+  };
+
   render() {
     if (!localStorage.getItem("token")) {
       return <Redirect to="/teacher/login" />;
