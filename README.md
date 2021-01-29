@@ -54,3 +54,4 @@ Les tests seront écrits avec Jest et Supertest.
 - [05 - Quizzes](./client/05-quizzes.md)
 - [06 - Student](./client/06-student.md)
 - [07 - Other](./client/07-other.md)
+- [08 - Tests](./client/08-tests.md)
