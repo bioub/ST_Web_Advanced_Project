@@ -54,9 +54,17 @@ export async function postActivate(quizId: number) {
   const token = localStorage.getItem("token");
 
   return axios.post<Quiz>(
-    `http://localhost:4000/api/quizzes/${quizId}/activate`, {},
+    `http://localhost:4000/api/quizzes/${quizId}/activate`,
+    {},
     {
       headers: { authorization: token },
     }
   );
+}
+
+export async function postQuiz(quiz: Partial<Quiz>) {
+  const token = localStorage.getItem("token");
+  return axios.post<Quiz>(`http://localhost:4000/api/quizzes/`, quiz, {
+    headers: { authorization: token },
+  });
 }
