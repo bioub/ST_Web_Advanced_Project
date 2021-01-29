@@ -23,7 +23,13 @@ Dans le composant `Answer` :
 - afficher les possibleAnswers sous forme de boutons
 - au click d'une possibleAnswer appeler postAnswer et changer la couleur du bouton (vert si la réponse est bonne, rouge sinon).
 
-Bonus : factoriser la ligne avec les boutons en créant composant PossibleAnswers qui recevra via les props : 
+Bonus 1 : factoriser la ligne avec les boutons en créant composant PossibleAnswers qui recevra via les props : 
   - possibleAnswers: PossibleAnswer[]
   - selectedAnswer: Answer
   - onSelectedAnswer: (answer: Answer) => void
+
+Bonus 2 : ajouter côté Express une route `GET /api/answers` à laquelle on pourra passer en query `?studentName=NOM_DU_STUDENT&teacherName=USERNAME_DU_TEACHER`
+
+Elle devra retourner un tableau de réponse stockées en DB (associées à ces `studentName` et `teacherName`)
+
+Appeler cette méthode au componentDidMount pour afficher les réponses précédentes.
