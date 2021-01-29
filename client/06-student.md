@@ -45,6 +45,8 @@ Pour faciliter la mise en forme vert/rouge du bouton, vous pouvez stocker les r�
 
 où 1 et 2 sont les id des questions.
 
+En TypeScript cet objet serait de type `{ [questionId: number]: string }`.
+
 Bonus 1 : factoriser la ligne avec les boutons en créant composant PossibleAnswers qui recevra via les props : 
   - possibleAnswers: PossibleAnswer[]
   - selectedAnswer: Answer
