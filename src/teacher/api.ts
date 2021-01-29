@@ -64,7 +64,11 @@ export async function postActivate(quizId: number) {
 
 export async function postQuiz(quiz: Partial<Quiz>) {
   const token = localStorage.getItem("token");
-  return axios.post<Quiz>(`http://localhost:4000/api/quizzes/`, quiz, {
+  return axios.post<Quiz>(`http://localhost:4000/api/quizzes`, quiz, {
     headers: { authorization: token },
   });
+}
+
+export async function postUser(user: Partial<User>) {
+  return axios.post<Quiz>(`http://localhost:4000/api/users/register`, user);
 }

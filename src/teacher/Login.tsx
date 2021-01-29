@@ -1,5 +1,5 @@
 import { Component, SyntheticEvent } from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 
 import { login } from "./api";
 import styles from "./Login.module.css";
@@ -50,6 +50,7 @@ class Login extends Component<RouteComponentProps> {
           onChange={this.handleChange}
         />
         <button>Connect</button>
+        <Link to="/teacher/register">Register</Link>
       </form>
     );
   }

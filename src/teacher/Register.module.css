@@ -1,0 +1,25 @@
+.host {
+  padding: 10px;
+  width: 70%;
+  background-color: #efefef;
+  border-radius: 5px;
+  margin: 100px auto;
+  text-align: center;
+}
+
+.host input {
+  margin: 20px auto;
+  display: block;
+}
+
+.host button {
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: coral;
+  border-radius: 5px;
+  display: block;
+  color: white;
+}
