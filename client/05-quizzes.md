@@ -89,4 +89,6 @@ Créer ensuite une boucle pour transformer les lignes du tableau par celle reçu
 
 Pour finir, écouter le click du bouton `Activate`, puis sur le modèle des requêtes précédentes, envoyer une requête `POST http://localhost:4000/api/quizzes/2/activate` (où 2 correspond à l'id du quiz à activer).
 
+Attention à la signature de `axios.post(url, body, options)` (dans notre requête on ne passe pas de `body`).
+
 Une fois la réponse obtenue, mettez à jour le tableau `quizzes` du state pour refléter le changement (vous pourriez utiliser la fonction `.map`)

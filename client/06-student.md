@@ -22,3 +22,8 @@ Dans le composant `Answer` :
 - afficher la liste des questions
 - afficher les possibleAnswers sous forme de boutons
 - au click d'une possibleAnswer appeler postAnswer et changer la couleur du bouton (vert si la réponse est bonne, rouge sinon).
+
+Bonus : factoriser la ligne avec les boutons en créant composant PossibleAnswers qui recevra via les props : 
+  - possibleAnswers: PossibleAnswer[]
+  - selectedAnswer: Answer
+  - onSelectedAnswer: (answer: Answer) => void
