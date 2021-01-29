@@ -36,3 +36,9 @@ Avec les intercepteurs de axios : https://github.com/axios/axios#interceptors
 
 Intercepter les erreurs 400, 401, 500 (plus généralement les status qui commencent par 4 ou 5), rediriger vers `/teacher/login` avec la méthode `history.pushState` : https://developer.mozilla.org/en-US/docs/Web/API/History/pushState
 
+### React Hooks
+
+Transformer le composant `teacher/Login` en fonction.
+
+Vous accéderez au state en utilisant le hook `setState` : https://reactjs.org/docs/hooks-intro.html
+
