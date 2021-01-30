@@ -1,12 +1,7 @@
 import axios from "axios";
 
-import { PossibleAnswer, Quiz } from "../teacher/api";
-
-export interface Answer {
-  studentName: string;
-  question: number;
-  answer: string;
-}
+import { Quiz } from "../interfaces";
+import Answer from "./Answer";
 
 export async function fetchActiveQuiz() {
   const username = localStorage.getItem("teacherUsername");

@@ -1,9 +1,8 @@
-import classNames from "classnames";
 import { Component } from "react";
 
-import { PossibleAnswer, Quiz } from "../teacher/api";
-import styles from './Answer.module.css';
+import { PossibleAnswer, Quiz } from "../interfaces";
 import { fetchActiveQuiz, postAnswer } from "./api";
+import PossibleAnswers from "./PossibleAnswers";
 
 interface State {
   quiz: Quiz | null;
@@ -31,36 +30,25 @@ class Answer extends Component<{}, State> {
     });
   }
   render() {
-    const { quiz } = this.state;
+    const { quiz, answers } = this.state;
+
+    if (!quiz) {
+      return <div>Loading...</div>;
+    }
+
     return (
       <div className="Answer">
-        {quiz && (
-          <>
-            <h2>{quiz.name}</h2>
-            {quiz.questions.map((q) => (
-              <div key={q.id}>
-                <p>{q.title}</p>
-                {q.possibleAnswers.map((a, i) => (
-                  <button
-                    disabled={Boolean(this.state.answers[q.id])}
-                    className={classNames({
-                      [styles.good]:
-                        this.state.answers[q.id] === a &&
-                        this.state.answers[q.id]?.good,
-                      [styles.bad]:
-                        this.state.answers[q.id] === a &&
-                        !this.state.answers[q.id]?.good,
-                    })}
-                    key={i}
-                    onClick={() => this.handleAnswer(a, q.id)}
-                  >
-                    {a.title}
-                  </button>
-                ))}
-              </div>
-            ))}
-          </>
-        )}
+        <h2>{quiz.name}</h2>
+        {quiz.questions.map((q) => (
+          <div key={q.id}>
+            <p>{q.title}</p>
+            <PossibleAnswers
+              possibleAnswers={q.possibleAnswers}
+              selectedAnswer={answers[q.id]}
+              onSelectedAnswer={(answer) => this.handleAnswer(answer, q.id)}
+            />
+          </div>
+        ))}
       </div>
     );
   }

@@ -1,7 +1,8 @@
 import { Component, SyntheticEvent } from "react";
 import { RouteComponentProps } from "react-router-dom";
 
-import { Question, postQuiz } from "./api";
+import { Question } from "../interfaces";
+import { postQuiz } from "./api";
 
 interface Props extends RouteComponentProps {}
 

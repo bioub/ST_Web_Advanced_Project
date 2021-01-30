@@ -21,7 +21,7 @@ class Register extends Component<RouteComponentProps> {
     event.preventDefault();
 
     try {
-      const res = await postUser(this.state);
+      await postUser(this.state);
       this.props.history.push('/teacher/login');
     } catch (err) {
       this.setState({

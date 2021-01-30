@@ -1,31 +1,6 @@
 import axios from "axios";
 
-export interface Credentials {
-  username: string;
-  password: string;
-}
-
-export interface User extends Credentials {
-  id: number;
-}
-
-export interface Quiz {
-  id: number;
-  name: string;
-  questions: Question[];
-  active: boolean;
-}
-
-export interface Question {
-  id: number;
-  title: string;
-  possibleAnswers: PossibleAnswer[];
-}
-
-export interface PossibleAnswer {
-  title: string;
-  good: boolean;
-}
+import { Credentials, Quiz, User } from "../interfaces";
 
 export async function login(credentials: Credentials) {
   return axios.post<{ token: string }>(

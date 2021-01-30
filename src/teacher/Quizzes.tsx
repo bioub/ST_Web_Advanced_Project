@@ -1,13 +1,8 @@
 import { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 
-import {
-  Quiz,
-  User,
-  fetchCurrentUser,
-  fetchQuizzes,
-  postActivate,
-} from "./api";
+import { Quiz, User } from "../interfaces";
+import { fetchCurrentUser, fetchQuizzes, postActivate } from "./api";
 
 interface Props {}
 
@@ -38,7 +33,8 @@ class Quizzes extends Component<Props, State> {
 
     this.setState({
       quizzes: this.state.quizzes.map((q) => ({
-        ...q, active: quizId === q.id,
+        ...q,
+        active: quizId === q.id,
       })),
     });
   }
