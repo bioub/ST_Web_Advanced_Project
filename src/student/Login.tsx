@@ -1,12 +1,12 @@
-import { Component, SyntheticEvent } from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { Component, SyntheticEvent } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
-import styles from "./Login.module.css";
+import styles from './Login.module.css';
 
 class Login extends Component<RouteComponentProps> {
   state = {
-    studentName: "",
-    teacherUsername: "",
+    studentName: '',
+    teacherUsername: '',
   };
 
   handleChange = (event: SyntheticEvent<HTMLInputElement>) => {

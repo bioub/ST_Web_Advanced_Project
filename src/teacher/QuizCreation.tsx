@@ -1,8 +1,8 @@
-import { Component, SyntheticEvent } from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { Component, SyntheticEvent } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
 
-import { Question } from "../interfaces";
-import { postQuiz } from "./api";
+import { Question } from '../interfaces';
+import { postQuiz } from './api';
 
 interface Props extends RouteComponentProps {}
 
@@ -13,14 +13,14 @@ interface State {
 
 class QuizCreation extends Component<Props, State> {
   state: State = {
-    name: "",
+    name: '',
     questions: [
       {
         id: 1,
-        title: "",
+        title: '',
         possibleAnswers: [
           {
-            title: "",
+            title: '',
             good: false,
           },
         ],
@@ -34,10 +34,10 @@ class QuizCreation extends Component<Props, State> {
         ...this.state.questions,
         {
           id: this.state.questions.length + 1,
-          title: "",
+          title: '',
           possibleAnswers: [
             {
-              title: "",
+              title: '',
               good: false,
             },
           ],
@@ -57,7 +57,7 @@ class QuizCreation extends Component<Props, State> {
           possibleAnswers: [
             ...q.possibleAnswers,
             {
-              title: "",
+              title: '',
               good: false,
             },
           ],
@@ -95,7 +95,7 @@ class QuizCreation extends Component<Props, State> {
   handleChangePossibleAnswerTitle = (
     questionId: number,
     answerIndex: number,
-    title: string
+    title: string,
   ) => {
     this.setState({
       questions: this.state.questions.map((q) => {
@@ -121,7 +121,7 @@ class QuizCreation extends Component<Props, State> {
   handleChangePossibleAnswerGood = (
     questionId: number,
     answerIndex: number,
-    good: boolean
+    good: boolean,
   ) => {
     this.setState({
       questions: this.state.questions.map((q) => {
@@ -172,7 +172,7 @@ class QuizCreation extends Component<Props, State> {
                 <h4>Possible Answers</h4>
                 {q.possibleAnswers.map((a, i) => (
                   <div key={i}>
-                    Title :{" "}
+                    Title :{' '}
                     <input
                       type="text"
                       value={a.title}
@@ -180,7 +180,7 @@ class QuizCreation extends Component<Props, State> {
                         this.handleChangePossibleAnswerTitle(
                           q.id,
                           i,
-                          event.target.value
+                          event.target.value,
                         )
                       }
                     />
@@ -192,10 +192,10 @@ class QuizCreation extends Component<Props, State> {
                           this.handleChangePossibleAnswerGood(
                             q.id,
                             i,
-                            event.target.checked
+                            event.target.checked,
                           )
                         }
-                      />{" "}
+                      />{' '}
                       Good answer
                     </label>
                   </div>

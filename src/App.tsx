@@ -1,15 +1,15 @@
-import { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Menu from "./Menu";
-import Home from "./public/Home";
-import NotFound from "./public/NotFound";
-import Answer from "./student/Answer";
-import StudentLogin from "./student/Login";
-import TeacherLogin from "./teacher/Login";
-import QuizCreation from "./teacher/QuizCreation";
-import Quizzes from "./teacher/Quizzes";
-import Register from "./teacher/Register";
+import Menu from './Menu';
+import Home from './public/Home';
+import NotFound from './public/NotFound';
+import Answer from './student/Answer';
+import StudentLogin from './student/Login';
+import TeacherLogin from './teacher/Login';
+import QuizCreation from './teacher/QuizCreation';
+import Quizzes from './teacher/Quizzes';
+import Register from './teacher/Register';
 
 class App extends Component {
   render() {

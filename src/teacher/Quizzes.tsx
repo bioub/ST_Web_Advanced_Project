@@ -1,8 +1,8 @@
-import { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 
-import { Quiz, User } from "../interfaces";
-import { fetchCurrentUser, fetchQuizzes, postActivate } from "./api";
+import { Quiz, User } from '../interfaces';
+import { fetchCurrentUser, fetchQuizzes, postActivate } from './api';
 
 interface Props {}
 
@@ -40,7 +40,7 @@ class Quizzes extends Component<Props, State> {
   }
 
   render() {
-    if (!localStorage.getItem("token")) {
+    if (!localStorage.getItem('token')) {
       return <Redirect to="/teacher/login" />;
     }
 

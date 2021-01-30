@@ -1,7 +1,7 @@
-import classNames from "classnames";
+import classNames from 'classnames';
 
-import { PossibleAnswer } from "../interfaces";
-import styles from "./PossibleAnswer.module.css";
+import { PossibleAnswer } from '../interfaces';
+import styles from './PossibleAnswer.module.css';
 
 interface PossibleAnswersProps {
   possibleAnswers: PossibleAnswer[];

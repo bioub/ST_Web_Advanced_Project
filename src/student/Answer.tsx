@@ -1,8 +1,8 @@
-import { Component } from "react";
+import { Component } from 'react';
 
-import { PossibleAnswer, Quiz } from "../interfaces";
-import { fetchActiveQuiz, postAnswer } from "./api";
-import PossibleAnswers from "./PossibleAnswers";
+import { PossibleAnswer, Quiz } from '../interfaces';
+import { fetchActiveQuiz, postAnswer } from './api';
+import PossibleAnswers from './PossibleAnswers';
 
 interface State {
   quiz: Quiz | null;
