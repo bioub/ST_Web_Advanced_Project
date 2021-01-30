@@ -17,7 +17,7 @@ test('GET /api/users/me', async () => {
   const res = await request(app).get('/api/users/me');
 
   expect(res.status).toBe(200);
-  expect(res.body).toEqual({ id: 1, username: 'test', password: '' });
+  expect(res.body).toEqual({ id: 1, username: 'test', password: '', quizzes: [] });
 });
 
 test('POST /api/users', async () => {
