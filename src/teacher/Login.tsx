@@ -19,21 +19,23 @@ class Login extends Component<RouteComponentProps> {
 
   handleSubmit = async (event: SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
+    const { username, password } = this.state;
 
     try {
-      const res = await login(this.state);
+      const res = await login({ username, password });
       localStorage.setItem('token', res.data.token);
+
       this.props.history.push('/teacher');
     } catch (err) {
       this.setState({
-        errorMessage: 'Mauvais login/password',
+        errorMessage: 'Invalid credentials',
       });
     }
   };
 
   render() {
     return (
-      <form className={styles.host} onSubmit={this.handleSubmit}>
+      <form className={styles.host} onSubmit={this.handleSubmit} role="form">
         {this.state.errorMessage && <div>{this.state.errorMessage}</div>}
         <input
           type="text"
