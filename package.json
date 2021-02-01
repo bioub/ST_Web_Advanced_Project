@@ -33,10 +33,10 @@
   },
   "scripts": {
     "start": "node dist/index.js",
-    "start:dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/index.ts",
+    "start:dev": "nodemon --watch \"src/**/*.ts\" --ignore \"src/**/*.spec.ts\" --exec \"ts-node\" src/index.ts",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "format": "prettier '**/*.{js,ts,json}' --write",
+    "format": "prettier \"**/*.{js,ts,json}\" --write",
     "build": "tsc",
     "seed:dev": "ts-node src/seeds/dev.ts",
     "test": "jest"
