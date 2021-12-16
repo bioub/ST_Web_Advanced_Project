@@ -2,9 +2,9 @@
 
 ## Mise en place
 
-Installer le router React Router : `npm i react-router-dom`
+Installer le router React Router : `npm i react-router-dom@5`
 
-Installer ses déclarations TypeScript : `npm i --save-dev @types/react-router-dom`
+Installer ses déclarations TypeScript : `npm i --save-dev @types/react-router-dom@5`
 
 Remplacer ensuite le contenu du fichier `App.tsx` par :
 
