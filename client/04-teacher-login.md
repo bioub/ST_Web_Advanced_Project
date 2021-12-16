@@ -55,7 +55,7 @@ Le fichier `Login.module.css` contient :
 
 Modifier le fichier `Login.tsx` pour qu'il contienne un state créé à partir des champs username et password (`onChange`).
 
-Dans le callback associé à `onChange`, le paramètre event sera de type `SyntheticEvent<HTMLInputElement>`.
+Dans le callback associé à `onChange`, le paramètre event sera de type `ChangeEvent<HTMLInputElement>`.
 
 Pour manipuler les propriétés `value` et `name` de l'élément `input` on utilisera `event.currentTarget.value` (et non pas `event.target.value` où techniquement peut être autre chose qu'un `HTMLInputElement`).
 
