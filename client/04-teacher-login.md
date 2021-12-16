@@ -41,7 +41,7 @@ Le fichier `Login.module.css` contient :
 }
 
 .host button {
-  cursor: pointer;x
+  cursor: pointer;
   outline: 0;
   border: 0;
   margin: 20px auto;
