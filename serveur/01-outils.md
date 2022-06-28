@@ -56,12 +56,12 @@ En regardant dans la doc de Prettier (https://prettier.io/docs/en/options.html) 
 
 Installer ensuite `lint-staged` pour lancer ce script automatiquement en `pre-commit` :
 
-`npx mrm lint-staged`
+`npm i lint-staged -D`
 
-Dans le fichier `package.json` modifier la config `lint-staged` pour que prettier s'applique aux fichiers `.ts`, `.js` et `.json`
+Reprendre la configuration vue pendant la formation (dans `package.json`) et modifier la config `lint-staged` pour que prettier s'applique aux fichiers `.ts`, `.js` et `.json`
 
 Conserver la config `*.js` pour `eslint` dans un premier temps.
 
-Indenter le fichier `index.js` n'importe comment et créer un commit dont le message pourrait être `chore: prettier` pour vérifier que `prettier` se lance bien en `pre-commit`
+Ajouter un `console.log` mal-indenté dans `index.js` et créer un commit pour vérifier que `prettier` se lance bien en `pre-commit`
 
 Remarquez l'utilisation du commentaire `// prettier-ignore` dans les fichiers du répertoire `routes/` qui exclu la prochaine instruction du formatage.
