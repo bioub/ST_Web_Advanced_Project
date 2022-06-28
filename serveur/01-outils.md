@@ -52,11 +52,19 @@ En regardant dans la doc de Prettier (https://prettier.io/docs/en/options.html) 
 - utiliser les apostrophes plutôt que les guillemets pour les chaines de caractères
 - utiliser les virgules finales tout le temps (y compris pour les appels de fonction)
 
-## lint-staged
+## Husky et lint-staged
 
-Installer ensuite `lint-staged` pour lancer ce script automatiquement en `pre-commit` :
+Installer ensuite `husky` et `lint-staged` pour lancer ce script automatiquement en `pre-commit` :
 
-`npm i lint-staged -D`
+`npm i husky lint-staged -D`
+
+Lancer les commandes suivantes pour configurer husky :
+
+```
+npx lint-staged
+npm run prepare
+npx husky add .husky/pre-commit "npx lint-staged"
+```
 
 Reprendre la configuration vue pendant la formation (dans `package.json`) et modifier la config `lint-staged` pour que prettier s'applique aux fichiers `.ts`, `.js` et `.json`
 
