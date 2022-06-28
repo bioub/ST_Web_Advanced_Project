@@ -22,7 +22,7 @@ Renommer ensuite l'ensemble des fichiers `.js` en `.ts`
 
 Lancer la commande `./node_modules/.bin/tsc --init` pour générer la configuration du compilateur TypeScript.
 
-Dans le fichier `tsconfig.json` changer la target pour `ES2019` avec laquelle Node.js 12 est compatible. (`ES2020` si vous utilisez Node.js 14)
+Dans le fichier `tsconfig.json` changer la target pour `ES2019` avec laquelle Node.js 12 est compatible. (`ES2020` si vous utilisez Node.js 14, `ES2022`  si vous utilisez Node.js 16)
 
 Déplacer les fichiers suivants dans un répertoire `src` :
 
@@ -44,7 +44,7 @@ Dans le fichier `package.json` ajouter un script `build` qui lancera la commande
 
 Vous devriez avoir un certain nombre d'erreurs à corriger dans les fichiers .ts
 
-Installer les déclarations pour les APIs de Node.js : `npm i --save-dev @types/node@12` (ou 14 selon votre version de Node) pour corriger les erreurs liées aux APIs de Node.js (require, module...)
+Installer les déclarations pour les APIs de Node.js : `npm i --save-dev @types/node@12` (ou 14 voir 16 ou 18 selon votre version de Node) pour corriger les erreurs liées aux APIs de Node.js (require, module...)
 
 Transformer les modules CommonJS en module ESM :
 
