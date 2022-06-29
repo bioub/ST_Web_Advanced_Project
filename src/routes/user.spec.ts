@@ -1,14 +1,13 @@
 import jwt from 'jsonwebtoken';
 import request from 'supertest';
-import { mocked } from 'ts-jest/utils';
 
 import app from '../app';
 import * as userModel from '../models/user';
 
 jest.mock('jsonwebtoken');
 jest.mock('../models/user');
-const mockedJwt = mocked(jwt, true);
-const mockedUserModel = mocked(userModel, true);
+const mockedJwt = jest.mocked(jwt, true);
+const mockedUserModel = jest.mocked(userModel, true);
 
 test('GET /api/users/me', async () => {
   mockedJwt.verify.mockImplementation(() => true);

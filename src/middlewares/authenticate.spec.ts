@@ -1,11 +1,10 @@
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { mocked } from 'ts-jest/utils';
 
 import authenticate from './authenticate';
 
 jest.mock('jsonwebtoken');
-const mockedJwt = mocked(jwt, true);
+const mockedJwt = jest.mocked(jwt, true);
 
 test('authenticate calls next if token is valid', () => {
   const validToken = '1234';
