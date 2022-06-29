@@ -7,8 +7,8 @@ import { getCurrent } from './user';
 export async function findByUser(user: User): Promise<Quiz[]> {
   const quizRepository = getRepository(Quiz);
 
-  const quizzes = await quizRepository.find({
-    where: { user: user },
+  const quizzes = await quizRepository.findBy({
+    user,
   });
 
   return quizzes;
@@ -23,7 +23,7 @@ export async function create(quiz: Quiz, token: string): Promise<Quiz> {
   return quiz;
 }
 
-export async function activate(id: string | number, token: string): Promise<Quiz> {
+export async function activate(id: number, token: string): Promise<Quiz> {
   const quizRepository = getRepository(Quiz);
   const quiz = await quizRepository.findOne({
     relations: ['user'],
@@ -42,7 +42,7 @@ export async function activate(id: string | number, token: string): Promise<Quiz
 
   quiz.active = true;
 
-  const quizzesToDeactivate = await quizRepository.find({ active: true, user: quiz.user });
+  const quizzesToDeactivate = await quizRepository.findBy({ active: true, user: quiz.user });
 
   for (const quizToDeactivate of quizzesToDeactivate) {
     quizToDeactivate.active = false;
@@ -59,12 +59,13 @@ export async function activate(id: string | number, token: string): Promise<Quiz
 export async function findActive(username: string): Promise<Quiz> {
   const userRepository = getRepository(User);
 
-  const user = await userRepository.findOne({ username });
+  const user = await userRepository.findOneBy({ username });
 
   const quizRepository = getRepository(Quiz);
 
-  const quiz = await quizRepository.findOne({
-    where: { active: true, user },
+  const quiz = await quizRepository.findOneBy({
+    active: true,
+    user,
   });
 
   return quiz;

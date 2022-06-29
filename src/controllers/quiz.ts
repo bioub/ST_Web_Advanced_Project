@@ -24,7 +24,7 @@ export async function create(req: Request, res: Response, next: NextFunction): P
 
 export async function activate(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
   try {
-    const quiz = await model.activate(req.params.id, req.headers.authorization);
+    const quiz = await model.activate(+req.params.id, req.headers.authorization);
 
     if (!quiz) {
       req.notFoundReason = 'Quiz not found';

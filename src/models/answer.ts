@@ -6,7 +6,9 @@ import { Quiz } from '../entities/quiz';
 export async function create(answer: Answer): Promise<Answer> {
   const quizRepository = getRepository(Quiz);
 
-  const activeQuiz = await quizRepository.findOne({ active: true });
+  const activeQuiz = await quizRepository.findOneBy({
+    active: true,
+  });
 
   if (!activeQuiz) {
     throw new Error('No active quiz');
@@ -14,7 +16,7 @@ export async function create(answer: Answer): Promise<Answer> {
 
   const answerRepository = getRepository(Answer);
 
-  const existingAnswer = await answerRepository.findOne({
+  const existingAnswer = await answerRepository.findOneBy({
     studentName: answer.studentName,
     quiz: activeQuiz,
     question: answer.question,

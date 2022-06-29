@@ -20,8 +20,9 @@ async function login(credentials: Credentials): Promise<string | null> {
     'hex',
   );
 
-  const user = await userRepository.findOne({
-    where: { username: credentials.username, password },
+  const user = await userRepository.findOneBy({
+    username: credentials.username,
+    password,
   });
 
   if (user) {
@@ -50,8 +51,8 @@ async function getCurrent(token: string): Promise<User> {
 async function create(data: Credentials): Promise<Partial<User>> {
   const userRepository = getRepository(User);
 
-  const existing = await userRepository.findOne({
-    where: { username: data.username },
+  const existing = await userRepository.findOneBy({
+    username: data.username,
   });
 
   if (existing) {
