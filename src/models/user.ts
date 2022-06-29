@@ -35,7 +35,7 @@ async function login(credentials: Credentials): Promise<string | null> {
 }
 
 async function getCurrent(token: string): Promise<User> {
-  const payload = decode(token) as { [key: string]: any };
+  const payload = decode(token) as { [key: string]: any }; // eslint-disable-line
 
   const userRepository = getRepository(User);
 
