@@ -29,12 +29,11 @@ Voici un exemple de test unitaire du middleware authenticate qui gère ces 2 pro
 ```
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
-import { mocked } from 'ts-jest/utils'
 
 import authenticate from './authenticate';
 
 jest.mock('jsonwebtoken');
-const mockedJwt = mocked(jwt, true)
+const mockedJwt = jest.mocked(jwt, true)
 
 test('authenticate calls next if token is valid', () => {
   const validToken = '1234';
@@ -57,7 +56,7 @@ test('authenticate calls next if token is valid', () => {
 
 En appelant votre middleware/controller il faudra forcer le type à `Request` et `Response` pour respecter les types : `fakeRequest as Request`...
 
-Pour pouvoir `mocker` des objets (ici le module `jsonwebtoken`), `ts-jest` nous fourni l'utilitaire `mocked` (`true` permet de s'appliquer aux sous-propriétés ici `verify`), cela permet de récupérer de la complétion sur les méthodes `mockImplementationOnce`...
+Pour pouvoir `mocker` des objets (ici le module `jsonwebtoken`), `jest` nous fourni l'utilitaire `mocked` (`true` permet de s'appliquer aux sous-propriétés ici `verify`), cela permet de récupérer de la complétion sur les méthodes `mockImplementationOnce`...
 
 En vous inspirant de l'exemple ci-dessus, compléter le test unitaire du middleware `authenticate` pour traiter le cas où le token serait invalide (la méthode `verify` devrait retourner `false`).
 
@@ -69,15 +68,14 @@ Voici un exemple de test fonctionnel pour la route `GET /api/user/login/me`
 ```
 import jwt from 'jsonwebtoken';
 import request from 'supertest';
-import { mocked } from 'ts-jest/utils';
 
 import app from '../app';
 import * as userModel from '../models/user';
 
 jest.mock('jsonwebtoken');
 jest.mock('../models/user');
-const mockedJwt = mocked(jwt, true);
-const mockedUserModel = mocked(userModel, true);
+const mockedJwt = jest.mocked(jwt, true);
+const mockedUserModel = jest.mocked(userModel, true);
 
 
 test('GET /api/users/me', async () => {
