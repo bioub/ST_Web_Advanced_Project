@@ -4,7 +4,7 @@ Nous allons écrire les tests unitaires et fonctionnels de l'application.
 
 Pour permettre de compiler les tests `.ts` en `.js` simplement et permettre le debug nous utiliserons la bibliothèque `ts-jest`.
 
-Installer `jest`, `ts-jest` et `supertest` : `npm i -D jest ts-jest supertest @types/supertest`
+Installer `jest`, `ts-jest` et `supertest` : `npm i -D jest @types/jest ts-jest supertest @types/supertest`
 
 Créer une config pour `ts-jest` via la commande: `npx ts-jest config:init`
 
