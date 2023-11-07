@@ -59,7 +59,7 @@ Transformer les modules CommonJS en module ESM :
 Installer les déclarations pour les bibliothèques utilisées : `npm i -D @types/express @types/cors @types/morgan @types/uuid`   
 
 Dans le fichier `tsconfig.json` décommenter la ligne :
-`"moduleResolution": "node",` pour permettre la prise en compte des modules Node.js.
+`"moduleResolution": "node16",` pour permettre la prise en compte des modules Node.js.
 
 Typer les variables `req`, `res`, `next` et `err` :
 - `req`: `Request` (importé depuis express)
