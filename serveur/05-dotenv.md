@@ -11,7 +11,7 @@ Installer dotenv : `npm i dotenv`
 Dans le fichier `index.ts` ajouter en début de fichier :
 
 ```
-import config from './config';
+import dotenv from 'dotenv';
 
 dotenv.config();
 ```
