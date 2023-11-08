@@ -33,7 +33,7 @@ import jwt from 'jsonwebtoken';
 import authenticate from './authenticate';
 
 jest.mock('jsonwebtoken');
-const mockedJwt = jest.mocked(jwt, true)
+const mockedJwt = jest.mocked(jwt, { shallow: true })
 
 test('authenticate calls next if token is valid', () => {
   const validToken = '1234';
@@ -74,13 +74,12 @@ import * as userModel from '../models/user';
 
 jest.mock('jsonwebtoken');
 jest.mock('../models/user');
-const mockedJwt = jest.mocked(jwt, true);
-const mockedUserModel = jest.mocked(userModel, true);
+const mockedJwt = jest.mocked(jwt, { shallow: true });
+const mockedUserModel = jest.mocked(userModel, { shallow: true });
 
 
 test('GET /api/users/me', async () => {
   mockedJwt.verify.mockImplementation(() => true);
-  mockedJwt.decode.mockImplementation(() => ({ username: 'test' }));
   mockedUserModel.getCurrent.mockResolvedValue({ id: 1, username: 'test', password: '' });
   const res = await request(app).get('/api/users/me');
 
